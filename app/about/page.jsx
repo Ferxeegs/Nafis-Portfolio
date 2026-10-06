@@ -1,0 +1,104 @@
+"use client";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import Button from "@/components/Button";
+import Image from "next/image";
+import FixedButton from "@/components/FixedButton";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import Quote from "./components/quote/quote.jsx";
+import Skills from "./components/skills/skills.jsx";
+import Experience from "./components/experience.jsx";
+import Education from "./components/education.jsx";
+
+// images
+import Hero from "@/public/image/nafis1.jpeg";
+
+import Hr from "@/components/Hr";
+import About from "./components/about/about.jsx";
+
+export default function Page() {
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, []);
+
+	return (
+		<>
+			<main className="overflow-hidden">
+				<FixedButton href="/#about">
+					<FontAwesomeIcon
+						icon={faChevronLeft}
+						className="text-teal-dark pr-10"
+					/>
+				</FixedButton>
+				<div className="relative h-screen gap-4 p-10 flex justify-center items-center flex-col mb-10 overflow-hidden">
+					<div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(15,118,110,0.18),transparent_45%),radial-gradient(ellipse_at_10%_80%,rgba(240,162,2,0.16),transparent_40%)]" />
+					{/* hero */}
+					<div className="z-0 mb-48 md:mb-0 md:absolute top-1/4 md:right-[10%] md:-translate-y-16 ">
+						<motion.div
+							initial={{ scale: 1 }}
+							animate={{ scale: 1.6 }}
+							transition={{ ease: "circOut", duration: 1 }}
+							className="relative bg-teal-soft rounded-sm h-[400px] md:h-[600px] w-[80vw] md:w-[30vw] overflow-hidden photo-frame">
+							<Image
+								src={Hero}
+								alt="Nafis Mufadhal"
+								fill
+								sizes="(max-width: 768px) 80vw, 30vw"
+								className="object-cover"
+								placeholder="blur"
+							/>
+						</motion.div>
+					</div>
+					<div className="z-10 w-full absolute md:w-auto md:left-[10%] top-[60%] md:top-1/3 col-span-2 flex flex-col justify-center items-start md:items-start text-start px-10 pt-4 backdrop-filter backdrop-blur-sm md:backdrop-blur-none bg-surface/70 md:bg-transparent md:pt-0">
+						<h1 className="md:bg-surface/80 bg-transparent lg:bg-transparent md:px-0 text-ink text-5xl md:text-8xl font-bold">
+							About <span className="text-teal">Me</span>
+						</h1>
+						<Hr />
+						<p className="title text-xl mt-4 tracking-wider text-ink-muted leading-[1.7rem] mb-5 ">
+							A brief introduction my journey as a{" "}
+							<span className="bg-transparent md:bg-teal-soft/70 xl:bg-transparent text-teal-dark font-medium">
+								software engineer.
+							</span>
+						</p>
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 0.5, ease: "circOut" }}
+							onClick={() => {
+								window.scrollTo({
+									top: 1000,
+									behavior: "smooth",
+								});
+							}}
+							className="mb-3">
+							<Button variation="primary">Scroll Down</Button>
+						</motion.div>
+					</div>
+				</div>
+				{/* end hero */}
+
+				{/* about */}
+				<About />
+				{/* end about */}
+
+				{/* skills */}
+				<Skills />
+				{/* end skills */}
+
+				{/* experience */}
+				<Experience />
+				{/* end experience */}
+
+				{/* Education */}
+				<Education />
+				{/* end Education */}
+
+				{/* Quote */}
+				<Quote />
+				{/* end Quote */}
+			</main>
+		</>
+	);
+}

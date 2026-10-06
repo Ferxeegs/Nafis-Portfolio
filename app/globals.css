@@ -1,0 +1,138 @@
+@import "tailwindcss";
+
+@theme {
+	--color-ink: #102a2d;
+	--color-ink-muted: #4a6b6f;
+	--color-teal: #0f766e;
+	--color-teal-dark: #0b5a54;
+	--color-teal-soft: #d5f5ef;
+	--color-amber: #f0a202;
+	--color-amber-deep: #d97706;
+	--color-surface: #e6f3f0;
+	--color-surface-warm: #fff6e8;
+}
+
+html {
+	font-size: clamp(13px, 0.89vw, 17px) !important;
+}
+
+body {
+	font-family: var(--font-poppins), sans-serif !important;
+	color: var(--color-ink);
+	background-color: var(--color-surface);
+	background-image:
+		radial-gradient(ellipse 80% 60% at 10% -10%, rgba(15, 118, 110, 0.22), transparent 55%),
+		radial-gradient(ellipse 70% 50% at 95% 5%, rgba(240, 162, 2, 0.18), transparent 50%),
+		radial-gradient(ellipse 60% 45% at 50% 100%, rgba(13, 148, 136, 0.12), transparent 55%),
+		linear-gradient(165deg, #eaf7f4 0%, #f7f3ea 48%, #e8f1f4 100%);
+	background-attachment: fixed;
+	min-height: 100vh;
+}
+
+/* Hide scrollbar only for fullpage scroll pages */
+body.fullpage-active {
+	overflow-x: hidden;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+body.fullpage-active::-webkit-scrollbar,
+html:has(body.fullpage-active)::-webkit-scrollbar {
+	display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body.fullpage-active,
+html:has(body.fullpage-active) {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-jost), sans-serif !important;
+}
+
+.title {
+	font-family: var(--font-jost), sans-serif !important;
+}
+
+.section {
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.navbar {
+	z-index: 49 !important;
+}
+
+span {
+	font-family: var(--font-jost), sans-serif;
+}
+
+li {
+	@apply list-none relative;
+}
+
+td,
+th {
+	@apply py-2 px-3;
+}
+
+a[title]:hover:after {
+	margin-left: -100px;
+	margin-top: -50px;
+	position: absolute;
+	content: attr(title);
+	padding: 0.5rem;
+	white-space: nowrap;
+	z-index: 1;
+	background-color: var(--color-teal-dark);
+	color: #fff;
+	border-radius: 4px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+	font-size: 0.8rem;
+}
+
+::selection {
+	background: var(--color-teal);
+	color: #fff;
+}
+
+.accent-text {
+	color: var(--color-teal);
+}
+
+.photo-frame {
+	filter: grayscale(1);
+	transition: filter 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+	box-shadow:
+		0 0 0 3px rgba(15, 118, 110, 0.28),
+		0 22px 44px rgba(16, 42, 45, 0.16);
+}
+
+.photo-frame:hover {
+	filter: grayscale(0);
+	transform: translateY(-4px);
+	box-shadow:
+		0 0 0 3px rgba(240, 162, 2, 0.45),
+		0 28px 50px rgba(16, 42, 45, 0.2);
+}
+
+.photo-frame-amber {
+	filter: grayscale(1);
+	transition: filter 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+	box-shadow:
+		0 0 0 3px rgba(240, 162, 2, 0.45),
+		0 18px 40px rgba(16, 42, 45, 0.16);
+}
+
+.photo-frame-amber:hover {
+	filter: grayscale(0);
+	transform: translateY(-3px);
+}
